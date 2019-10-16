@@ -3,13 +3,15 @@ __all__ = []
 import pkg_resources
 
 import scarab
+a_ver = '0.0.0'
 try:
-    a_ver = pkg_resources.get_distribution(__name__).version
+    a_ver = pkg_resources.get_distribution('kv_plugin').version
     print('version is: {}'.format(a_ver))
 except:
     print('fail!')
     pass
-version = scarab.VersionSemantic(0,1,0)
+version = scarab.VersionSemantic()
+version.parse(a_ver)
 version.package = 'driplineorg/dripline-python-extension-example'
 version.commit = '---'
 __all__.append("version")
