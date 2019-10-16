@@ -3,9 +3,15 @@ __all__ = []
 import pkg_resources
 
 import scarab
+try:
+    a_ver = pkg_resources.get_distribution(__name__).version
+    print('version is: {}'.format(a_ver))
+except:
+    print('fail!')
+    pass
 version = scarab.VersionSemantic(0,1,0)
 version.package = 'driplineorg/dripline-python-extension-example'
-version.commit = 'a1b2c3'
+version.commit = '---'
 __all__.append("version")
 
 from .jitter_endpoint import *
