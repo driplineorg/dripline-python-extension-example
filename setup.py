@@ -9,7 +9,7 @@ def set_version_data():
     origin = subprocess.check_output(['git', 'remote', 'get-url', 'origin'])
     print("raw origin: '{}'".format(origin))
 
-packages = find_namespace_packages('.', include=['dripline*'])
+packages = find_namespace_packages('.', include=['dripline.extensions.*'])
 print('packages are: {}'.format(packages))
 
 setup(
@@ -18,6 +18,8 @@ setup(
     use_scm_version={
         "root": ".",
         "write_to": "./version.py",
+        'version_scheme': lambda x: "v{}".format(x.tag),
+        'local_scheme': lambda x: "",
     },
     packages=packages,
 )

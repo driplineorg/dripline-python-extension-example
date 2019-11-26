@@ -1,12 +1,19 @@
 __all__ = []
 
 import pkg_resources
-import ipdb;ipdb.set_trace()
 
 import scarab
-version = scarab.VersionSemantic(0,1,0)
-version.package = 'driplineorg/dripline-python.kve'
-version.commit = 'a1b2c3'
+a_ver = '0.0.0'
+try:
+    a_ver = pkg_resources.get_distribution('kv_plugin').version
+    print('version is: {}'.format(a_ver))
+except:
+    print('fail!')
+    pass
+version = scarab.VersionSemantic()
+version.parse(a_ver)
+version.package = 'driplineorg/dripline-python-extension-example'
+version.commit = '---'
 __all__.append("version")
 
 from .jitter_endpoint import *
