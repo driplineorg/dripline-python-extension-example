@@ -9,7 +9,7 @@ def set_version_data():
     origin = subprocess.check_output(['git', 'remote', 'get-url', 'origin'])
     print("raw origin: '{}'".format(origin))
 
-packages = find_namespace_packages('.', include=['dripline*'])
+packages = find_namespace_packages('.', include=['dripline.extensions.*'])
 print('packages are: {}'.format(packages))
 
 setup(
